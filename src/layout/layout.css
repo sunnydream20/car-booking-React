@@ -1,0 +1,153 @@
+  
+  /* header */
+  .header {
+    z-index: 2;
+    height: 100px;
+    position: sticky;
+    top: 0px;
+  }
+  .nav-header {
+    background-color: #273b84;
+    width: 100%;
+    z-index: 3;
+  }
+  
+  .nav-header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: #273b84;
+  }
+  
+  .nav-header li a {
+    display: block;
+    padding: 20px 10px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .nav-header li a:hover,
+  .nav-header .menu-btn:hover {
+    color: #f78e20;
+  }
+  
+  .nav-header .logo {
+    display: block;
+    float: left;
+    font-size: 2em;
+    padding: 30px 20px;
+    text-decoration: none;
+  }
+  
+  /* menu */
+  
+  .nav-header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+  }
+  
+  /* menu icon */
+  
+  .nav-header .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    padding: 48px 20px;
+    position: relative;
+    user-select: none;
+  }
+  
+  .nav-header .menu-icon .navicon {
+    background: white;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+  }
+  
+  .nav-header .menu-icon .navicon:before,
+  .nav-header .menu-icon .navicon:after {
+    background: white;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+  }
+  
+  .nav-header .menu-icon .navicon:before {
+    top: 5px;
+  }
+  
+  .nav-header .menu-icon .navicon:after {
+    top: -5px;
+  }
+  
+  /* menu btn */
+  
+  .nav-header .menu-btn {
+    display: none;
+  }
+  
+  .nav-header .menu-btn:checked ~ .menu {
+    max-height: 240px;
+  }
+  
+  .nav-header .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+  
+  .nav-header .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+  }
+  
+  .nav-header .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+  }
+  
+  .nav-header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+  .nav-header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+  }
+  
+  /* 48em = 768px */
+  
+  @media (min-width: 768px) {
+    .nav-header li {
+      float: left;
+    }
+    .nav-header li a {
+      padding: 38px 20px;
+    }
+    .nav-header .menu {
+      clear: none;
+      float: right;
+      max-height: none;
+    }
+    .nav-header .menu-icon {
+      display: none;
+    }
+  }
+
+  .logo-img {
+    width: 170px;
+  }
+
+  .main-body {
+    background-image: url('https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/cars_bg.jpg?id=126');
+    background-position: center;
+  }
+
+  .footer-link-div {
+    border-radius: 9999px;
+    background-color: #2d47a7;
+    padding: 9px 10px;
+  }
+
+  .footer-link-div:hover {
+    background-color: #f78e20;
+  }

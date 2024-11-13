@@ -1,0 +1,441 @@
+.including-form {
+    background: #e5e5e5 url('https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/banner-3-2.jpg?id=402');
+    padding: 100px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.stm_text_baloon {
+    /* position: relative; */
+    display: inline-block;
+    padding: 18px;
+    background-color: #f78e20;
+    border-radius: 9999px;
+    min-width: 160px;
+    text-align: center;
+}
+
+.stm_text_baloon h1 {
+    margin: 10px;
+}
+
+.stm_text_baloon h2 {
+    margin: 10px;
+}
+
+.stm_text_baloon h4 {
+    margin: 10px;
+}
+
+.banner-form {
+    display: flex;
+    justify-content: end;
+}
+
+
+@media screen and (max-width: 1025px) {
+    .banner-form {
+        justify-content: left;
+    }
+}
+
+.why-choose-us {
+    background-color: white;
+}
+
+.vehicle-background {
+    position: static;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 0;
+    overflow: hidden;
+    padding: 50px 0px 100px 0px;
+    background-image: url('https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/cars_bg.jpg?id=126') !important;
+}
+
+.vehicle-title {
+    text-align: center;
+}
+
+.what-our-clients-say {
+    background-color: white;
+    padding-bottom: 30px;
+}
+
+/* carousel */
+.swiper {
+    width: 100%;
+    height: 400px;
+  }
+  .swiper-slide {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .client-img {
+    width: 67px;
+    height: 67px;
+    border-radius: 9999px;
+  }
+
+  .client-name {
+    color: #273b84;
+  }
+
+  .client-bio {
+    color: #888;
+    line-height: 30px;
+  }
+
+.b-d-g {
+    border: 1px dotted #dedede;
+}
+
+.aboutus-img {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    background: url('https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/image-1.jpg?id=70');
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.aboutus-title {
+    padding: 0px 20px;
+}
+.aboutus-bio {
+    line-height: 25px;
+    padding: 30px;
+}
+
+.btn-secondary {
+    background-color: #f78e20;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 20px 30px;
+    margin: 0px 20px 20px 20px;
+}
+
+.b-w {
+    border: 2px solid white;
+    border-radius: 3px;
+}
+
+/*Brand page CSS*/
+.brand-reservation {
+    background-image: url('https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/reservation-1916x453.jpg');
+    padding: 80px 30px 20px 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.reserve-form-opacity {
+    background: rgba(42, 64, 69, 0.5);
+    min-height: 54px;
+    text-decoration: none;
+}
+
+.reserve-number-div {
+    background-color: #2a4047;
+    padding: 10px 20px;
+}
+
+.reserve-form-number {
+    font-size: 22px;
+}
+
+.reserve-form-des {
+    font-size: 18px;
+    padding: 12px;
+    text-align: center;
+    /* padding-left: 40px; */
+}
+
+.reserve-form-label {
+    background-color: white;
+    padding: 5px 25px;
+    text-align: left;
+}
+
+.reserve-form-label p {
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 1023px) {
+    .hidden-md-reserve {
+        display: none;
+    }   
+}
+
+.brand-content {
+    background-color: #dcdcdc;
+    padding-bottom: 30px;
+}
+.brand-filter-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width:767px) {
+    .brand-filter-form {
+        justify-content: center;
+    }
+}
+
+.brand-filter {
+    width: 270px;
+    margin-left: 30px;
+}
+
+.brand-container {
+    padding: 0px 10px;
+}
+
+
+.about-content {
+    background-color: #eeeeee;
+    padding-top: 50px;
+}
+
+.about-content h2 {
+    margin-top: 0px;
+}
+
+.about-welcome-img {
+    width: 100%;
+}
+
+.welcome-about {
+    margin-bottom: 40px;
+}
+
+.welcome-about p {
+    color: #888;
+}
+
+/* about us carousel */
+
+.about-gallery .swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+.about-gallery .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    opacity: 0.7;
+  }
+
+  .about-gallery .swiper-slide:hover {
+    opacity: 1.1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+  }
+
+.about-gallery {
+    background-color: #232628;
+}
+
+.media-title {
+    padding-top: 40px;
+    font-size: 48px;
+}
+
+/*special border*/
+
+.colored-separator {
+    text-align: center;
+    vertical-align: top;
+    font-size: 0;
+    line-height: 1;
+}
+
+.vc_custom_1445510911464 {
+    margin-top: 17px;
+    margin-bottom: 25px;
+}
+
+.colored-separator .first-long, .colored-separator .last-short {
+    display: inline-block;
+    vertical-align: top;
+    width: 33px;
+    height: 5px;
+    transform: skew(-40deg, 0deg);
+    border-radius: 2px;
+    background-color: #f0c541;
+}
+
+.colored-separator .first-long {
+    margin-right: 3px;
+}
+
+
+.colored-separator .first-long, .colored-separator .last-short {
+    display: inline-block;
+    vertical-align: top;
+    width: 33px;
+    height: 5px;
+    transform: skew(-40deg, 0deg);
+    border-radius: 2px;
+    background-color: #f0c541;
+}
+
+.colored-separator .last-short {
+    width: 16px;
+}
+
+/*Card View*/
+
+.our-team .wrapper{
+    padding: 10px 10px 50px;
+    background-color: white;
+    margin-bottom: 50px;
+}
+.our-team #card-area{
+    padding: 0px 0;
+}
+.our-team .box-area{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 20px;
+    margin-top: 50px;
+}
+.our-team .box {
+	border-radius: 10px;
+    min-height: 200px;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+.our-team .box img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+.our-team .overlay {
+	height: 0;
+	background: linear-gradient(transparent,#1c1c1c 58%);
+	border-radius: 10px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	/* padding: 0 60px; */
+    width: 100%;
+	text-align: center;
+	font-size: 14px;
+	transition: height 0.5s;
+}
+.our-team .overlay h3 {
+	font-weight: 500;
+	margin-bottom: 5px;
+	margin-top: 80%;
+	font-family: 'Bebas Neue', sans-serif;
+	font-size: 30px;
+	letter-spacing: 2px;
+}
+
+.our-team .overlay p {
+    margin: 5px 0px;
+}
+
+.our-team .overlay .name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.our-team .overlay a {
+	margin-top: 10px;
+	color: #262626;
+	text-decoration: none;
+	font-size: 14px;
+	background: #fff;
+	border-radius: 50px;
+	text-align: center;
+	padding: 5px 15px;
+}
+.our-team .box:hover img{
+    transform: scale(1.1);
+}
+.our-team .box:hover .overlay{
+    height: 100%;
+}
+
+.about-banner-social {
+    background-color: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.about-social-img {
+    width: 180px;
+    opacity: 0.7;
+}
+
+.about-social-img:hover {
+    opacity: 1;
+}
+
+
+.contact-information-outside {
+    background-color: white;
+    padding-bottom: 100px;
+}
+
+.contact-control {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 15px 20px;
+    width: 90%;
+    background-color: #eee;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.contact-control:focus {
+    border-color: #f0c541 !important;
+    background-color: white;
+}
+
+.contact-content .submit {
+    background-color: #273b84;
+    color: white;
+    border-radius: 1px;
+    padding: 15px 25px;
+    border: none;
+    margin-top: 25px;
+}
+
+.contact-content .submit:hover {
+    background-color: #f0c541;
+    color: #273b84;
+}
+
+.contact-content .textarea {
+    height: 100%;
+}

@@ -1,0 +1,220 @@
+.banner-search-form {
+    max-width: 450px;
+    width: 450px;
+    padding: 30px 20px;
+}
+
+@media screen and (max-width: 1025px) {
+    .banner-search-form {
+        width: 100%;
+    }
+}
+
+.btn {
+    padding: 20px;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-top: 20px;
+    border: none;
+}
+
+.why-choose-us-comp h3 {
+    margin: 0px;
+}
+
+.why-choose-title {
+    margin: 0px;
+    padding: 40px;
+    text-align: center;
+}
+
+
+.vehicle-item {
+    background-color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 345px;
+    justify-content: space-evenly;
+}
+
+.vehicle-img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.vehicle-item svg {
+    color: #f78e20;
+}
+
+.vehicle-item:hover {
+    background-color: #f78e20;
+    transition: ease-in-out .5s;
+}
+
+.vehicle-item:hover svg {
+    color: white;
+}
+
+.vehicle-item:hover h2 {
+    color: white;
+}
+
+.vehicle-item:hover p {
+    color: white;
+}
+
+.vehicle-item:hover div {
+    color: white;
+}
+
+.vehicle-item:hover .price-btn {
+    background-color: #273b84;
+    color: white;
+}
+
+.brand-item {
+    background-color: white;
+    padding: 30px 20px;
+    display: flex;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.brand-item img {
+    max-height: 200px;
+}
+
+.brand-item svg {
+    color: #f78e20;
+}
+
+.brand-item span {
+    color: #f78e20;
+}
+
+.faq-drawer {
+    margin-bottom: 0px;
+    max-width: 400px;
+  }
+  
+  .faq-drawer__content-wrapper {
+    font-size: 1.25em;
+    line-height: 1.4em;
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.25s ease-in-out;
+  }
+  
+  .faq-drawer__title {
+    border-top: lightblue 1px solid;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 0 0 0;
+    position: relative;
+    margin-bottom: 10px;
+    transition: all 0.25s ease-out;
+    color: #273b84;
+  }
+  
+  .faq-drawer__title::after {
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    content: " ";
+    display: inline-block;
+    float: right;
+    height: 8px;
+    left: 2px;
+    position: relative;
+    right: 20px;
+    top: 2px;
+    transform: rotate(135deg);
+    transition: 0.35s ease-in-out;
+    vertical-align: top;
+    width: 8px;
+  }
+  
+  /* OPTIONAL HOVER STATE */
+  .faq-drawer__title:hover { 
+    color: #4E4B52  ;
+  }
+  
+  .faq-drawer__trigger:checked
+    + .faq-drawer__title
+    + .faq-drawer__content-wrapper {
+    max-height: 350px;
+  }
+  
+  .faq-drawer__trigger:checked + .faq-drawer__title::after {
+    transform: rotate(-45deg);
+    transition: 0.25s ease-in-out;
+  }
+  
+  .brand-item input[type="checkbox"] {
+    display: none;
+  }
+
+  .detail-item {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 570px) {
+    .brand-item img {
+        width: 100%;
+        height: auto;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .brand-item img {
+        width: 100%;
+        height: auto;
+    }
+  }
+
+  .price-brand {
+    font-size: 20px;
+  }
+
+  .pay-later {
+    border: 2px solid #f78e20;
+    background-color: white;
+    border-radius: 3px;
+    padding: 15px 20px;
+    color: #273b84;
+  }
+
+  .pay-later:hover {
+    border: 2px solid #273b84;
+  }
+
+  .pay-now {
+    border: 2px solid #f78e20;
+    background-color: #f78e20;
+    border-radius: 3px;
+    padding: 15px 20px;
+    color: white;
+  }
+
+  .pay-now:hover {
+    border: 2px solid #273b84;
+    background-color: #273b84;
+    color: white;
+  }
+
+
+  .header .lead {
+    max-width: 620px;
+  }
+  
+  .gallery-container a {
+    width: 240px;
+    margin: 5px;
+  }
+  
+  .gallery-container a img {
+    max-width: 100%;
+    height: auto;
+  }

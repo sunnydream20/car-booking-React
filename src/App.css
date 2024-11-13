@@ -1,0 +1,285 @@
+.bg-color-primary {
+  background-color: #273b84;
+}
+
+.bg-color-secondary {
+  background-color: #f78e20;
+}
+
+.color-primary {
+  color: #273b84;
+}
+
+.color-secondary {
+  color: #f78e20;
+}
+
+.bg-color-white {
+  background-color: white;
+}
+
+.color-white {
+  color: white;
+}
+
+.color-lightgray {
+  color: #ccc;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.align-center {
+  align-items: center;
+}
+.justify-spacebetween {
+  justify-content: space-between;
+}
+.text-center {
+  text-align: center;
+}
+.align-baseline {
+  align-items: baseline;
+}
+
+.gap-s {
+  gap: 20px;
+}
+.gap-xs {
+  gap: 5px;
+}
+.m-0 {
+  margin: 0px;
+}
+.m-s {
+  margin: 20px;
+}
+.p-l-s {
+  padding-left: 10px;
+}
+.p-0 {
+  padding: 0px !important;
+}
+
+.p-s {
+  padding: 20px;
+}
+
+.p-t-38 {
+  padding-top: 38px;
+}
+
+.p-xs {
+  padding: 5px;
+}
+
+.m-b-s {
+  margin-bottom: 20px;
+}
+
+.m-b-xs {
+  margin-bottom: 10px;
+}
+
+.m-t-0 {
+  margin-top: 0px;
+}
+
+.m-t-s {
+  margin-top: 20px;
+}
+
+.m-t-xs {
+  margin-top: 10px;
+}
+
+.font-xs {
+  font-size: 18px;
+}
+
+.font-xxs {
+  font-size: 12px;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-s {
+  font-size: 22px;
+}
+
+.font-m {
+  font-size: 26px;
+}
+
+.font-l {
+  font-size: 30px;
+}
+
+.textdecoration-none {
+  text-decoration: none;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.b-t-g {
+  border-top: 1px solid lightslategray;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.w-fit-content {
+  width: fit-content;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* styles.css */
+
+.container {
+  width: 100%;               /* Full width by default */
+  max-width: 1110px;        /* Default max width */
+  box-sizing: border-box;    /* Include padding in width calculations */
+  margin: 0 auto;           /* Center the container */
+}
+
+/* Media Queries */
+
+/* For large screens (1280px and above) */
+@media (min-width: 1281px) {
+  .container {
+      max-width: 1110px; /* Max width of 1280px */
+      margin: 0 auto;    /* Center the container */
+  }
+}
+
+/* For medium screens (between 1024px and 1280px) */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .container {
+      max-width: 1024px; /* Max width of 1024px */
+      margin: 0 auto;    /* Center the container */
+  }
+}
+
+/* For smaller screens (between 768px and 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+      max-width: 768px;  /* Max width of 768px */
+      margin: 0 auto;    /* Center the container */
+  }
+}
+
+/* For extra small screens (under 768px) */
+@media (max-width: 767px) {
+  .container {
+      max-width: 100%;    /* Full width (no max limit) */
+      margin: 0 auto;     /* Center the container */
+  }
+}
+
+/* Styles for rows */
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Wrap columns as needed */
+}
+/* Styles for Columns */
+[class^="col-"] {
+  padding: 25px; /* Padding for each column */
+  box-sizing: border-box;
+}
+
+/* Media Queries */
+/* Large screens (over 1024px) */
+@media (min-width: 1024px) {
+  .col-lg-1 { flex: 0 0 8.33%; max-width: 8.33%; }
+  .col-lg-2 { flex: 0 0 16.67%; max-width: 16.67%; }
+  .col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-lg-4 { flex: 0 0 33.33%; max-width: 33.33%; }
+  .col-lg-5 { flex: 0 0 41.67%; max-width: 41.67%; }
+  .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-lg-7 { flex: 0 0 58.33%; max-width: 58.33%; }
+  .col-lg-8 { flex: 0 0 66.67%; max-width: 66.67%; }
+  .col-lg-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-lg-10 { flex: 0 0 83.33%; max-width: 83.33%; }
+  .col-lg-11 { flex: 0 0 91.67%; max-width: 91.67%; }
+  .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Medium screens (between 768px and 1024px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .col-md-1 { flex: 0 0 10%; max-width: 10%; }
+  .col-md-2 { flex: 0 0 20%; max-width: 20%; }
+  .col-md-3 { flex: 0 0 30%; max-width: 30%; }
+  .col-md-4 { flex: 0 0 40%; max-width: 40%; }
+  .col-md-5 { flex: 0 0 50%; max-width: 50%; }
+  .col-md-6 { flex: 0 0 60%; max-width: 60%; }
+  .col-md-7 { flex: 0 0 70%; max-width: 70%; }
+  .col-md-8 { flex: 0 0 80%; max-width: 80%; }
+  .col-md-9 { flex: 0 0 90%; max-width: 90%; }
+  .col-md-10 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Small screens (under 768px) */
+@media (max-width: 767px) {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5,
+  .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9,
+  .col-sm-10, .col-sm-11, .col-sm-12 {
+      flex: 0 0 100%; /* Full width for all columns */
+      max-width: 100%; /* Full width for all columns */
+  }
+}
