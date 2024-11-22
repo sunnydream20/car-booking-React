@@ -3,13 +3,14 @@ import React from 'react';
 import './layout.css';
 import { Link } from 'react-router-dom';
 import PhoneLogo from "../components/phonelogo";
+import logoPng from "../logo1.png";
 
 const Header = () => {
   return (
     <header className='header bg-color-primary'>
         <div className='container'>
             <div className='nav-header color-white'>
-                <Link to="/" className="logo"><img className='logo-img' src='logo1.png' alt='loading...' /> </Link>
+                <Link to="/" className="logo"><img className='logo-img' src={logoPng} alt='loading...' /> </Link>
                 <input className="menu-btn" type="checkbox" id="menu-btn" />
                 <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
                 <ul className="menu">

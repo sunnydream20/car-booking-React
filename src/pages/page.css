@@ -1,38 +1,51 @@
 .including-form {
-    background: #e5e5e5 url('https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/banner-3-2.jpg?id=402');
-    padding: 100px 10px;
-    background-repeat: no-repeat;
-    background-position: center;
+    height: 600px;
+    background-color: white;
+}
+.including-form .swiper{
+    /* height: ; */
+    height: 500px;
+    position: relative;
 }
 
 
-.stm_text_baloon {
-    /* position: relative; */
-    display: inline-block;
-    padding: 18px;
-    background-color: #f78e20;
-    border-radius: 9999px;
-    min-width: 160px;
-    text-align: center;
+@media screen and (max-width: 1025px) {
+    .including-form {
+        height: 550px;
+    }
+    .including-form .swiper{
+        height: 450px;
+    }
+    .including-form .slider {
+        top: 450px !important;
+    }
 }
 
-.stm_text_baloon h1 {
-    margin: 10px;
+@media screen and (max-width: 768px) {
+    .including-form {
+        height: 400px;
+    }
+    .including-form .swiper{
+        height: 300px;
+    }
+    .including-form .slider {
+        top: 300px !important;
+    }
 }
 
-.stm_text_baloon h2 {
-    margin: 10px;
+.including-form .swiper-slide {
+    margin-top: 0px;
 }
 
-.stm_text_baloon h4 {
-    margin: 10px;
+.including-form .slider-img {
+    width: 100%;
+    height: auto;
 }
 
 .banner-form {
     display: flex;
     justify-content: end;
 }
-
 
 @media screen and (max-width: 1025px) {
     .banner-form {
@@ -56,6 +69,7 @@
 
 .vehicle-title {
     text-align: center;
+    padding-top: 30px;
 }
 
 .what-our-clients-say {
@@ -439,3 +453,343 @@
 .contact-content .textarea {
     height: 100%;
 }
+
+
+/*loading spinner*/
+
+/* styles.css */
+
+.loading-spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px; /* Spinner diameter */
+    height: 50px; /* Spinner diameter */
+    animation: spin 1s linear infinite; /* Spin animation */
+    margin: 20px auto; /* Center the spinner */
+}
+
+/* Define the spin animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+/*banner card slider in Homg Page*/
+  
+.including-form .card {
+    width: 200px;
+    min-width: 200px;
+    height: 170px;
+    background:#fff;
+    border-radius:30px;
+    position:relative;
+    z-index:10;
+    margin:20px 10px;
+    cursor:pointer;
+    transition: all .25s ease;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0, .08);
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .including-form .card:hover {
+    transform:translate(0, -10px);
+    box-shadow: 0px 17px 35px 0px rgba(0,0,0,.07);
+  }
+  
+  .including-form .card h4 {
+    position:absolute;
+    left: 0;
+    top: 0;
+    padding: 15px;
+  }
+  
+  .including-form .card i {
+    position:absolute;
+    right: 0;
+    top: 0;
+    padding: 15px;
+    font-size:1.4rem;
+    line-height:3.2rem;
+  }
+  
+  .including-form .card-text h3 {
+    /* padding: 20px; */
+    margin: 5px 0px;
+  }
+  
+  .including-form .card-text p {
+    font-size: .8rem;
+    opacity: .6;
+    margin-top: 0px;
+  }
+  
+  .including-form .card .including-form -img {
+    transform: translate(90px,-10px);
+    margin: 0 30px;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    transition: all .35s ease-out;
+  }
+  
+  .including-form .card img {
+    width: 170px;
+    height: 90px;
+  }
+  
+  .including-form .card-content {
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    width:100%;
+    overflow:auto;
+    padding-left:10px;
+    padding-right: 50px;
+    scroll-behavior:smooth;
+  }
+  
+  .including-form .card-content::-webkit-scrollbar {
+     height:0px;
+  }
+  
+  .including-form .card-content:after {
+    content:'';
+    display:block;
+    min-width:20px;
+    height:100px;
+    position:relative;
+  }
+  
+  .including-form .btn{
+    min-width:30px;
+    margin:auto 5px;
+    height:30px;
+    border-radius:20px;
+    background:#fff;
+    border:0px;
+    outline:none;
+    cursor:pointer;
+    z-index:9999;
+    padding: 10px;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,.08);
+    transition: all .25s ease;
+  }
+  
+  .including-form .btn:hover{
+    box-shadow: 0px 17px 35px 0px rgba(0,0,0,.07);
+  }
+  
+  .including-form .btn i {
+    /* font-size:1.2rem; */
+  }
+  
+  .including-form .slider {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgb(242,243,248);
+    width:80%;
+    margin: auto;
+    overflow:hidden;
+    position: absolute;
+    top: 500px;
+    z-index: 4;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+  }
+  
+
+  .popular-div {
+    background-color: white;
+    padding: 30px 0px;
+  }
+
+  .promo-div {
+    background-color: white;
+    padding: 30px 0px;
+  }
+
+  .popular-div .text-center {
+    overflow: hidden;
+  }
+
+  .popular-div .client-img {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+  }
+
+
+
+  /*home modal*/
+  
+.modal {
+    z-index: 33;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(77, 77, 77, .7);
+    transition: all .4s;
+  }
+  
+  .modal:target {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .modal__content {
+    border-radius: 4px;
+    position: relative;
+    width: 700px;
+    height: 500px;
+    max-width: 90%;
+    background: #fff;
+    padding: 1em 2em;
+    display: flex;
+  }
+
+  .modal__footer {
+    text-align: right;
+    a {
+      color: #585858;
+    }
+    i {
+      color: #d02d2c;
+    }
+  }
+
+  .home-modal-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-modal-details h3 {
+    margin: 5px 0px;
+  }
+  .modal__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #585858;
+    text-decoration: none;
+  }
+
+  .home-modal-img-div {
+    width: 300px;
+    height: 250px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: cover;
+  }
+  .home-modal-detail-span {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .modal__content {
+        width: 80%;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+    .home-modal-img-div {
+        width: 200px;
+        height: 150px;
+    }
+    .home-modal-details h1 {
+        font-size: 20px;
+    }
+    .home-modal-details h3 {
+        font-size: 16px;
+    }
+    .home-modal-details .gap-s {
+        gap: 5px;
+    }
+    .home-modal-detail-span {
+        font-size: 12px;
+    }
+  }
+
+  .popular-div .swiper-slide {
+    width: 350px;
+  }
+
+  .home-swiper-img-div {
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .popular-div h3 {
+    margin: 5px;
+  }
+
+  .popular-div p {
+    margin: 5px;
+  }
+
+  .popular-div a {
+    text-decoration: none;
+    color: #273b84;
+  }
+
+  .wa-btn {
+    background-color: #273b84;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    margin-top: 30px;
+  }
+
+  .whatsapp-content {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0px;
+  }
+
+  .form-whatsapp {
+    width: 600px;
+    /* height: 400px; */
+    background-color: white;
+    top: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+
+  @media screen and (max-width: 1024px) {
+    .form-whatsapp {
+        width: 700px;
+        top: 150px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .form-whatsapp {
+        width: 330px;
+        top: 100px;
+    }
+  }

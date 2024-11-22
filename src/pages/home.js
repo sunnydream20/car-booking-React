@@ -1,279 +1,532 @@
 // src/pages/Home.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './page.css';
-import BannerForm from '../components/banner-form';
 import WhyChooseUs from "../components/why-choose-us";
 import Vehicle from "../components/vehicle";
 import MapComponent from "../components/MapComp";
+
+import { faChair } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
+import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { faSnowflake } from '@fortawesome/free-solid-svg-icons';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/navigation';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
-import { FreeMode, Pagination } from 'swiper/modules';
+import { FreeMode, Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-const vehicleData = [
+const defaultHomeSliders = [
     {
-        id: 1,
-        type: "Premium",
-        type_des: "Volkswagen Tiguan or Similar",
-        seats: 4,
-        bags: 2,
-        doors: 4,
-        snow: "A/C",
-        img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/suv_trucks-1.png",
-        later_day_price: 900,
-        now_day_price: 800
+        url: "https://imgcdn.oto.com/marketing/mg-4-ev-desktop-min-1729491943.jpg"
     },
     {
-        id: 2,
-        type: "Economy",
-        type_des: "Mini Cooper 3 or Similar",
-        seats: 4,
-        doors: 2,
-        snow: "A/C",
-        img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/economy.png",
-        later_day_price: 150,
-        now_day_price: 100
+        url: "https://imgcdn.oto.com/marketing/chery-omoda-5-desktop-min-1729491988.jpg"
     },
     {
-        id: 3,
-        type: "Standart",
-        type_des: "Volkswagen Tiguan or Similar",
-        seats: 4,
-        bags: 2,
-        doors: 4,
-        snow: "A/C",
-        img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/stand-1.png",
-        later_day_price: 340,
-        now_day_price: 280
+        url: "https://imgcdn.oto.com/marketing/car-insurance-oto-desktop-en-1717769360.jpg"
     },
     {
-        id: 4,
-        type: "Specially",
-        type_des: "Volkswagen Tiguan or Similar",
-        seats: 4,
-        bags: 2,
-        doors: 4,
-        snow: "A/C",
-        img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/speciality.png",
-        later_day_price: 600,
-        now_day_price: 589
-    },
-    {
-        id: 5,
-        type: "Minivan",
-        type_des: "Volkswagen Tiguan or Similar",
-        seats: 4,
-        bags: 2,
-        doors: 4,
-        snow: "A/C",
-        img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/minivan_van.png",
-        later_day_price: 1240,
-        now_day_price: 1180
-    },
-    {
-        id: 6,
-        type: "Convertible",
-        type_des: "Volkswagen Tiguan or Similar",
-        seats: 4,
-        bags: 2,
-        doors: 4,
-        snow: "A/C",
-        img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/conv-1.png",
-        later_day_price: 1001,
-        now_day_price: 900
+        url: "https://imgcdn.oto.com/marketing/wuling-air-ev-desktop-min-1729491857.jpg"
     },
 ]
 
 const Home = () => {
+    const [category, setCategory] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [urls, setUrls] = useState([]);
+    const [banners, setBanners] = useState([]);
+    const [populars, setPopulars] = useState([]);
+    const [promos, setPromos] = useState([]);
+    const [error, setError] = useState(null);
+    const [currentCar, setCurrentCar] = useState({
+        _id: "",
+        type: "",
+        typeDes: "",
+        seats: 0,
+        doors: 0,
+        bags: 0,
+        snow: "",
+        imgUrl: "",
+        details: [],
+        nowDayPrice: 0,
+        laterDayPrice: 0,
+    })
+
+    useEffect(() => {
+        getCategory();
+        getHomeSliders();
+        getPopular();
+        getPromo();
+        getHomeBanners();
+    }, [])
+
+    const getCategory = async () => {
+        setLoading(true);
+        const startLoadingTime = Date.now(); // Record the start time
+        try {
+            const response = await axios.get("http://localhost:8080/api/category");
+            setCategory(response.data.categories);
+        }
+        catch (err) {
+            setError(err);
+            console.log("Error");
+        } 
+        finally {
+            const loadingDuration = Date.now() - startLoadingTime;
+            const minimumLoadingTime = 1000; // 1 second in milliseconds
+    
+            if (loadingDuration < minimumLoadingTime) {
+                // If less than 1 second, wait for the remaining time
+                await new Promise(resolve => setTimeout(resolve, minimumLoadingTime - loadingDuration));
+            }
+            
+            setLoading(false);
+        }
+    }
+
+    const getHomeSliders = async () => {
+        try {
+            const sliderImgs = await axios.get("http://localhost:8080/api/homesliders");
+            setUrls(sliderImgs.data.urls);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+    const getHomeBanners = async () => {
+        try {
+            const banners = await axios.get("http://localhost:8080/api/homebanners");
+            setBanners(banners.data.homebanners);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const getPopular = async () => {
+        try {
+            const promosData = await axios.get("http://localhost:8080/api/homeadditions/popular");
+            setPopulars(promosData.data.cars);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const getPromo = async () => {
+        try {
+            const promosData = await axios.get("http://localhost:8080/api/homeadditions/promo");
+            setPromos(promosData.data.cars);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const seeDetail = async (id) => {
+        try {
+            const selectedCar = await axios.get('http://localhost:8080/api/car/'+id);
+            var carData = selectedCar.data; 
+            setCurrentCar({
+                _id: carData._id,
+                type: carData.type,
+                typeDes: carData.typeDes,
+                seats: carData.seats,
+                doors: carData.doors,
+                bags: carData.bags && carData.bags > 0 ? carData.bags : 0,
+                snow: carData.snow,
+                imgUrl: carData.imgUrl,
+                details: carData.details,
+                nowDayPrice: carData.nowDayPrice,
+                laterDayPrice: carData.laterDayPrice,
+            })
+        } catch (error) {
+
+        }
+    }
 
     const vehicles = () => {
-        return vehicleData.map(vehicle => (
+        // Check the length of the category array
+        if (category.length === 0) {
+            return <p>No data</p>; // Render a message if there are no vehicles
+        }
+    
+        // Render Vehicle components if there are vehicles
+        return category.map(vehicle => (
             <Vehicle 
-                key={vehicle.id} 
-                id={vehicle.id}
+                key={vehicle._id}
+                id={vehicle._id}
                 type={vehicle.type} 
-                type_des={vehicle.type_des} 
+                type_des={vehicle.typeDes} 
                 seats={vehicle.seats} 
                 bags={vehicle.bags} 
                 doors={vehicle.doors} 
                 snow={vehicle.snow} 
-                img_url={vehicle.img_url} 
-                later_day_price={vehicle.later_day_price} 
-                now_day_price={vehicle.now_day_price} 
+                img_url={vehicle.imgUrl} 
+                now_day_price={vehicle.nowDayPrice} 
             />
         ));
     };
 
+    const nextBanner = () => {
+        const cards = document.querySelector('.card-content')
+        cards.scrollLeft=cards.scrollLeft += window.innerWidth / 2 > 100 ? 220 : window.innerWidth -220
+    }
+
+    const prevBanner = () => {
+        const cards = document.querySelector('.card-content')
+        cards.scrollLeft=cards.scrollLeft -= window.innerWidth / 2 > 100 ? 220 : window.innerWidth -220
+    }
+
     return (
         <>
-            <div className='including-form'>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='col-lg-6 col-md-10 col-sm-10'>
-                            <div className="stm_text_baloon">
-                                <div className="inner">
-                                    <h1><span style={{ color:"#ffffff" }} >&nbsp;20%</span></h1>
-                                    <h2><span  className='color-primary'>OFF</span></h2>
-                                    <h4 className='color-primary'>For Online <br /> Booking</h4>
+            {loading ? (
+                <div className="loading-spinner"></div>
+            ): (
+                <>
+                    <div className='including-form'>
+                        <Swiper 
+                            navigation={true}
+                            modules={[Navigation, Autoplay]}
+                            className="mySwiper" 
+                            autoplay={{
+                                delay: 4000,
+                                disableOnInteraction: false
+                            }}>
+                                {urls.map((data, key) => (
+                                    <SwiperSlide key={key} style={{
+                                        backgroundImage: `url(${data.url})`,
+                                        backgroundPosition: 'center',
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundSize: 'cover'
+                                    }}>
+                                        {/* <img className='slider-img' src={data.url} alt='...loading' /> */}
+                                    </SwiperSlide>
+                                ))}
+                            {/* <SwiperSlide>Slide 1</SwiperSlide>
+                            <SwiperSlide>Slide 2</SwiperSlide>
+                            <SwiperSlide>Slide 3</SwiperSlide>
+                            <SwiperSlide>Slide 4</SwiperSlide>
+                            <SwiperSlide>Slide 5</SwiperSlide>
+                            <SwiperSlide>Slide 6</SwiperSlide>
+                            <SwiperSlide>Slide 7</SwiperSlide>
+                            <SwiperSlide>Slide 8</SwiperSlide>
+                            <SwiperSlide>Slide 9</SwiperSlide> */}
+                        </Swiper>
+
+                        <div>
+                            
+                            <div className="slider">
+                                <button id="prev" onClick={() => {prevBanner()}} className="btn">
+                                    <i className="las la-angle-left"></i>
+                                </button>
+                                <div className="card-content">
+                                    {banners.map((data, key) => (
+                                        <div className="card" key={key}>
+                                            <div className="card-img">
+                                                <img src={data.url} alt='...loading'/>                                
+                                            </div>
+                                            <div className="card-text">
+                                                <h3>{data.title}</h3>
+                                                <p>{data.des}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <button id="next" onClick={() => {nextBanner()}} className="btn">
+                                    <i className="las la-angle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div className='popular-div'>
+                        <div className='container'>
+                        <h1 className='color-primary text-center m-0 p-s'>Popular</h1>
+                            <Swiper
+                                spaceBetween={20}
+                                freeMode={true}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                modules={[FreeMode, Pagination]}
+                                className="mySwiper"
+                                breakpoints={{
+                                    // when window width is <= 640px
+                                    560: {
+                                        slidesPerView: 1, // Show 1 slide
+                                    },
+                                    // when window width is > 640px and <= 1024px
+                                    800: {
+                                        slidesPerView: 2, // Show 2 slides (optional)
+                                    },
+                                    // when window width is > 1024px
+                                    1025: {
+                                        slidesPerView: 3, // Show 3 slides
+                                    },
+                                }}
+                                >
+                                    {populars.map((data, key) => (
+                                         <SwiperSlide key={key}>
+                                         <div className='text-center b-d-g' style={{
+                                             padding: "20px 30px 0px 30px"
+                                         }}>
+                                             <div className='home-swiper-img-div' style={{
+                                                 backgroundImage: `url(${data.imgUrl})`
+                                             }}>
+     
+                                             </div>
+                                           
+                                             <h3 className='client-name'>{data.type}</h3>
+                                             <p className='client-bio'>{data.nowDayPrice}(Rp)</p>
+                                             <a className='client-bio' onClick={() => {seeDetail(data._id)}} href="#see-car">See Details</a>
+                                         </div>
+                                     </SwiperSlide>
+                                    ))}
+                            </Swiper>
+                        </div>
+                    </div>
+                 
+                    <div className='popular-div'>
+                        <div className='container'>
+                        <h1 className='color-primary text-center m-0 p-s'>Promo</h1>
+                            <Swiper
+                                spaceBetween={20}
+                                freeMode={true}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                modules={[FreeMode, Pagination]}
+                                className="mySwiper"
+                                breakpoints={{
+                                    // when window width is <= 640px
+                                    560: {
+                                        slidesPerView: 1, // Show 1 slide
+                                    },
+                                    // when window width is > 640px and <= 1024px
+                                    800: {
+                                        slidesPerView: 2, // Show 2 slides (optional)
+                                    },
+                                    // when window width is > 1024px
+                                    1025: {
+                                        slidesPerView: 3, // Show 3 slides
+                                    },
+                                }}
+                                >
+                                    {promos.map((data, key) => (
+                                         <SwiperSlide key={key}>
+                                         <div className='text-center b-d-g' style={{
+                                             padding: "20px 30px 0px 30px"
+                                         }}>
+                                             <div className='home-swiper-img-div' style={{
+                                                 backgroundImage: `url(${data.imgUrl})`
+                                             }}>
+     
+                                             </div>
+                                           
+                                             <h3 className='client-name'>{data.type}</h3>
+                                             <p className='client-bio'>{data.nowDayPrice}(Rp)</p>
+                                             <a className='client-bio' onClick={() => {seeDetail(data._id)}} href="#see-car">See Details</a>
+                                         </div>
+                                     </SwiperSlide>
+                                    ))}
+                            </Swiper>
+                        </div>
+                    </div>
+                 
+
+                    <div className='vehicle-background'>
+                        <div className='vehicle-categories'>
+                            <div className='container'>
+                                <h1 className='vehicle-title color-white m-t-0'>Vehicle Categories</h1>
+                                <div className='row'>
+                                    {vehicles()}
                                 </div>
                             </div>
                         </div>
-                        <div className='col-lg-6 col-md-10 col-sm-10 banner-form'>
-                            <BannerForm />
+                    </div>
+                    <div className='why-choose-us'>
+                        <div className='container'>
+                            <WhyChooseUs />
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className='why-choose-us'>
-                <div className='container'>
-                    <WhyChooseUs />
-                </div>
-            </div>
-            <div className='vehicle-background'>
-                <div className='vehicle-categories'>
-                    <div className='container'>
-                        <h1 className='vehicle-title color-white m-t-0'>Vehicle Categories</h1>
-                        <div className='row'>
-                            {vehicles()}
+                    <div className='what-our-clients-say'>
+                        <div className='container'>
+                            <h1 className='color-primary text-center m-0 p-s'>What Our Clients Say</h1>
+                            <Swiper
+                                spaceBetween={20}
+                                freeMode={true}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                modules={[FreeMode, Pagination]}
+                                className="mySwiper"
+                                breakpoints={{
+                                    // when window width is <= 640px
+                                    560: {
+                                        slidesPerView: 1, // Show 1 slide
+                                    },
+                                    // when window width is > 640px and <= 1024px
+                                    800: {
+                                        slidesPerView: 2, // Show 2 slides (optional)
+                                    },
+                                    // when window width is > 1024px
+                                    1025: {
+                                        slidesPerView: 3, // Show 3 slides
+                                    },
+                                }}
+                                >
+                                <SwiperSlide>
+                                    <div className='text-center b-d-g' style={{
+                                        padding: "20px 30px 0px 30px"
+                                    }}>
+                                        <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/avatar-2-1-67x67.jpg' alt='...loading' />
+                                        <h3 className='client-name'>John Doe</h3>
+                                        <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className='text-center b-d-g' style={{
+                                        padding: "20px 30px 0px 30px"
+                                    }}>
+                                        <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/man1-66x66.jpg' alt='...loading' />
+                                        <h3 className='client-name'>Oliver Garden</h3>
+                                        <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+
+                                <SwiperSlide>
+                                    <div className='text-center b-d-g' style={{
+                                        padding: "20px 30px 0px 30px"
+                                    }}>
+                                        <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/woman-67x67.jpg' alt='...loading' />
+                                        <h3 className='client-name'>Ann Black</h3>
+                                        <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+
+                                <SwiperSlide>
+                                    <div className='text-center b-d-g' style={{
+                                        padding: "20px 30px 0px 30px"
+                                    }}>
+                                        <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/avatar-2-1-67x67.jpg' alt='...loading' />
+                                        <h3 className='client-name'>Lon Lahm</h3>
+                                        <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+
+                                <SwiperSlide>
+                                    <div className='text-center b-d-g ' style={{
+                                        padding: "20px 30px 0px 30px"
+                                    }}>
+                                        <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/woman-67x67.jpg' alt='...loading' />
+                                        <h3 className='client-name'>Ann Black</h3>
+                                        <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                            </Swiper>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className='what-our-clients-say'>
-                <div className='container'>
-                    <h1 className='color-primary text-center m-0 p-s'>What Our Clients Say</h1>
-                    <Swiper
-                        spaceBetween={20}
-                        freeMode={true}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        modules={[FreeMode, Pagination]}
-                        className="mySwiper"
-                        breakpoints={{
-                            // when window width is <= 640px
-                            560: {
-                                slidesPerView: 1, // Show 1 slide
-                            },
-                            // when window width is > 640px and <= 1024px
-                            800: {
-                                slidesPerView: 2, // Show 2 slides (optional)
-                            },
-                            // when window width is > 1024px
-                            1025: {
-                                slidesPerView: 3, // Show 3 slides
-                            },
-                        }}
-                        >
-                        <SwiperSlide>
-                            <div className='text-center b-d-g' style={{
-                                padding: "20px 30px 0px 30px"
-                            }}>
-                                <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/avatar-2-1-67x67.jpg' alt='...loading' />
-                                <h3 className='client-name'>John Doe</h3>
-                                <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
-                                </p>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className='text-center b-d-g' style={{
-                                padding: "20px 30px 0px 30px"
-                            }}>
-                                <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/man1-66x66.jpg' alt='...loading' />
-                                <h3 className='client-name'>Oliver Garden</h3>
-                                <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
-                                </p>
-                            </div>
-                        </SwiperSlide>
-
-                        <SwiperSlide>
-                            <div className='text-center b-d-g' style={{
-                                padding: "20px 30px 0px 30px"
-                            }}>
-                                <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/woman-67x67.jpg' alt='...loading' />
-                                <h3 className='client-name'>Ann Black</h3>
-                                <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
-                                </p>
-                            </div>
-                        </SwiperSlide>
-
-                        <SwiperSlide>
-                            <div className='text-center b-d-g' style={{
-                                padding: "20px 30px 0px 30px"
-                            }}>
-                                <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/avatar-2-1-67x67.jpg' alt='...loading' />
-                                <h3 className='client-name'>Lon Lahm</h3>
-                                <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
-                                </p>
-                            </div>
-                        </SwiperSlide>
-
-                        <SwiperSlide>
-                            <div className='text-center b-d-g ' style={{
-                                padding: "20px 30px 0px 30px"
-                            }}>
-                                <img className='client-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/woman-67x67.jpg' alt='...loading' />
-                                <h3 className='client-name'>Ann Black</h3>
-                                <p className='client-bio'>Sed malesuada, neque quis tincidunt suscipit, lorem lectus rutrum lacus, a iaculis ipsum eros sed ipsum. Sed scelerisque massa ut nibh tincidunt, eget pellentesque.		
-                                </p>
-                            </div>
-                        </SwiperSlide>
-                    </Swiper>
-                </div>
-            </div>
-            <div className='what-do-we-know bg-color-primary'>
-                <div className='container'>
-                    <div className='row'>
-                        <div className='col-lg-6 col-md-5 col-sm-10 p-0 color-white'>
-                            <h1 className='aboutus-title'>What Do You Know About Us</h1>
-                            <p className='aboutus-bio'>Vestibulum id odio a erat gravida sollicitudin. Quisque porttitor turpis sit amet dolor imperdiet, et molestie tellus suscipit. Ut nec odio nisl. Quisque malesuada tortor non erat fermentum, sed sollicitudin nisl sodales. Pellentesque faucibus viverra massa, vitae tempus nisi venenatis eu. Proin mauris tellus, egestas ac tempor vitae, luctus lobortis nisl. Vivamus convallis gravida quam</p>
-                            <button className='btn-secondary'>Our Company</button>
-                        </div>
-                        <div className='col-lg-6 col-md-5 col-sm-10 p-0'>
-                            <div className='aboutus-img'>
+                    <div className='what-do-we-know bg-color-primary'>
+                        <div className='container'>
+                            <div className='row'>
+                                <div className='col-lg-6 col-md-5 col-sm-10 p-0 color-white'>
+                                    <h1 className='aboutus-title'>What Do You Know About Us</h1>
+                                    <p className='aboutus-bio'>Vestibulum id odio a erat gravida sollicitudin. Quisque porttitor turpis sit amet dolor imperdiet, et molestie tellus suscipit. Ut nec odio nisl. Quisque malesuada tortor non erat fermentum, sed sollicitudin nisl sodales. Pellentesque faucibus viverra massa, vitae tempus nisi venenatis eu. Proin mauris tellus, egestas ac tempor vitae, luctus lobortis nisl. Vivamus convallis gravida quam</p>
+                                    <button className='btn-secondary'>Our Company</button>
+                                </div>
+                                <div className='col-lg-6 col-md-5 col-sm-10 p-0'>
+                                    <div className='aboutus-img'>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className='contact-banner bg-color-secondary'>
-                <div className='container'>
-                    <div className='row text-center align-center'>
-                        <div className='col-lg-7 col-md-10 col-sm-10 '>
-                            <h1 className='color-primary'>Have A Questions? Fell Free To Ask...</h1>
-                        </div>
-                        <div className='col-lg-3 col-md-10 col-sm-10 flex justify-center align-center'>
-                        <FontAwesomeIcon className='icon color-white' icon={faPhoneSquare} style={{
-                            height: "32px",
-                            marginRight: "10px"
-                        }}/> <span className='color-primary' style={{
-                            fontSize: "22px"
-                        }}>+1 879-8837-3984</span>
-                        </div>
-                        <div className='col-lg-2 col-md-10 col-sm-10 flex justify-center align-center'>
-                            <div className='b-w flex' style={{
-                                padding: "10px 20px"
-                            }}>
+                    <div className='contact-banner bg-color-secondary'>
+                        <div className='container'>
+                            <div className='row text-center align-center'>
+                                <div className='col-lg-7 col-md-10 col-sm-10 '>
+                                    <h1 className='color-primary'>Have A Questions? Fell Free To Ask...</h1>
+                                </div>
+                                <div className='col-lg-3 col-md-10 col-sm-10 flex justify-center align-center'>
                                 <FontAwesomeIcon className='icon color-white' icon={faPhoneSquare} style={{
-                                    height: "20px",
+                                    height: "32px",
                                     marginRight: "10px"
-                                }}/><span className='color-primary'>FEEDBACK</span>
+                                }}/> <span className='color-primary' style={{
+                                    fontSize: "22px"
+                                }}>+1 879-8837-3984</span>
+                                </div>
+                                <div className='col-lg-2 col-md-10 col-sm-10 flex justify-center align-center'>
+                                    <div className='b-w flex' style={{
+                                        padding: "10px 20px"
+                                    }}>
+                                        <FontAwesomeIcon className='icon color-white' icon={faPhoneSquare} style={{
+                                            height: "20px",
+                                            marginRight: "10px"
+                                        }}/><span className='color-primary'>FEEDBACK</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className='home-map'>
-                <MapComponent />
-            </div>
+                    <div id="see-car" className="modal">
+                        <div className="modal__content gap-s">
+                            <div className='flex align-center justify-center'>
+                                <div className='home-modal-img-div' style={{
+                                    backgroundImage: `url(${currentCar.imgUrl})`
+                                }}>
+                            </div>
+                            </div>
+                            <div className='home-modal-details flex-1'>
+                                <h1>{currentCar.type}</h1>
+                                <h3>{currentCar.typeDes}</h3>
+                                <h3>{currentCar.nowDayPrice}(RP)</h3>
+                                <div className='flex flex-wrap gap-s align-center'>
+                                    <div className='flex align-center color-primary gap-xs m-b-xs'>
+                                        <FontAwesomeIcon className='icon' icon={faChair} /> {currentCar.seats} Seats
+                                    </div>
+                                    {currentCar.bags > 0 ? (<div className='flex align-center color-primary gap-xs m-b-xs'>
+                                        <FontAwesomeIcon className='icon' icon={faBagShopping} /> {currentCar.seats} Bags
+                                    </div>) : "" }
+                                    <div className='flex align-center gap-xs m-b-xs color-primary'>
+                                        <FontAwesomeIcon className='icon' icon={faDoorOpen} /> {currentCar.doors} Doors
+                                    </div>
+                                    <div className='flex align-center gap-xs color-primary m-b-xs'>
+                                        <FontAwesomeIcon className='icon' icon={faSnowflake} /> {currentCar.snow}
+                                    </div>
+                                </div>
+                                <div className='flex flex-wrap'>
+                                    {currentCar.details.map((data, key) => (
+                                        <div className='home-modal-detail-span'>{data}</div>
+                                    ))}
+                                </div>
+                                <div style={{
+                                    marginTop: "20px"
+                                }}>
+                                    <Link className='wa-btn' to={`whatsapp/${currentCar._id}`} >Redirect To WA</Link>
+                                </div>
+                            </div>
+                                <a href = "#" className="modal__close">&times;</a>
+                        </div>
+                    </div>
+                    <div className='home-map'>
+                        <MapComponent />
+                    </div>
+                </>
+            )}
         </>
     );
 };

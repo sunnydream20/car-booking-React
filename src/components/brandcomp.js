@@ -7,6 +7,7 @@ import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import { faSnowflake } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function BrandComp ({id, type, type_des, seats, bags, doors, snow, img_url, later_day_price, now_day_price, details }) {
 
@@ -38,31 +39,43 @@ export default function BrandComp ({id, type, type_des, seats, bags, doors, snow
                         </div>
 
                         <div className="faq-drawer">
-                            <input className="faq-drawer__trigger" id={`faq-drawer-${id}`} type="checkbox" /><label className="faq-drawer__title" htmlFor={`faq-drawer-${id}`}>Details </label>
+                            <input className="faq-drawer__trigger" id={`faq-drawer-${id}`} type="checkbox" defaultChecked/><label className="faq-drawer__title" htmlFor={`faq-drawer-${id}`}>Details </label>
                             <div className="faq-drawer__content-wrapper">
                                 <div className="faq-drawer__content flex flex-wrap gap-xs">
-                                    {details ? details.map((detail, key) => (
+                                    {details && details.length > 0 ? details.map((detail, key) => (
                                         <div key={key} className='flex gap-xs align-center'>
                                             <FontAwesomeIcon icon={faCheck} />
                                             <span className='detail-item'>{detail}</span>
                                         </div>
-                                    )) : "no-details"}
+                                    )) : (<span style={{
+                                        fontSize: "14px"
+                                    }}>no-details</span>)}
                                     
                                 </div>
                             </div>
                         </div>
 
                     </div>
+                    <div>
                     <div className='flex flex-wrap gap-s p-l-s'>
                         <div>
-                            <p className='color-primary'><span className='price-brand'>${later_day_price}</span> / Day</p>
+                            <p className='color-primary'><span className='price-brand'>Rp {later_day_price}</span> / Day</p>
                             <button className='pay-later'>PAY LATER</button>
                         </div>
                         <div>
-                            <p className='color-primary'><span className='price-brand'>${now_day_price}</span> / Day</p>
+                            <p className='color-primary'><span className='price-brand'>Rp {now_day_price}</span> / Day</p>
                             <button className='pay-now'>PAY NOW</button>
                         </div>
+                        
                     </div>
+                    <div style={{
+                        marginTop: "20px",
+                        marginLeft: "10px"
+                    }}>
+                            <Link to={`/whatsapp/${id}`} className='brand-download-btn'>Download</Link >
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

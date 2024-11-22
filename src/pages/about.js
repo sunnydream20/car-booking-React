@@ -14,11 +14,8 @@ import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faCheck } from '@fortawesome/free-solid-svg-icons';
 
-
-
 const About = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
-    
     return (
         <>
             <div className='about-content'>

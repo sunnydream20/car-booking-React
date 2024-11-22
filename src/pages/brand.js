@@ -1,10 +1,20 @@
 // src/pages/About.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
 import { useParams } from 'react-router-dom';
 // import BrandComp from "../components/brandcomp";
 import BrandComp from '../components/brandcomp';
+import axios from 'axios';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+
+import { FreeMode, Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 const options = [
   { value: 'default_sort', label: 'Default Sorting' },
@@ -15,176 +25,99 @@ const options = [
   { value: 'high_low_sort', label: 'Sorty by price: high to low' },
 ];
 
-const vehicleData = [
-  {
-      id: 1,
-      type: "Premium",
-      type_des: "Volkswagen Tiguan or Similar",
-      seats: 4,
-      bags: 2,
-      doors: 4,
-      snow: "A/C",
-      img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/suv_trucks-1.png",
-      later_day_price: 900,
-      now_day_price: 800,
-      details: ['Alexiliary heating', 'Head-up Display', 'Alloy wheels', 'Mp3 interface', 'Bluetooth', 'MP3 interface', 'Electric side Mirrow', 'Navigation System', 'CD player', 'Navigation System', 'Sports Package', 'Panoramic roof', 'Central Locking'],
-      category_id: 1,
-  },
-  {
-      id: 2,
-      type: "Economy",
-      type_des: "Mini Cooper 3 or Similar",
-      seats: 4,
-      doors: 2,
-      snow: "A/C",
-      img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/economy.png",
-      later_day_price: 150,
-      now_day_price: 100,
-      details: ['Alloy wheels', 'Mp3 interface', 'Bluetooth', 'MP3 interface', 'Electric side Mirrow', 'Navigation System', 'CD player', 'Navigation System', 'Sports Package', 'Panoramic roof', 'Central Locking'],
-      category_id: 1,
-  },
-  {
-      id: 3,
-      type: "Standart",
-      type_des: "Volkswagen Tiguan or Similar",
-      seats: 4,
-      bags: 2,
-      doors: 4,
-      snow: "A/C",
-      img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/stand-1.png",
-      later_day_price: 340,
-      now_day_price: 280,
-      details: ['Alexiliary heating', 'Head-up Display', 'Alloy wheels', 'Mp3 interface', 'Bluetooth', 'MP3 interface', 'Electric side Mirrow','Sports Package', 'Panoramic roof', 'Central Locking'],
-      category_id: 2,
-  },
-  {
-      id: 4,
-      type: "Specially",
-      type_des: "Volkswagen Tiguan or Similar",
-      seats: 4,
-      bags: 2,
-      doors: 4,
-      snow: "A/C",
-      img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/speciality.png",
-      later_day_price: 600,
-      now_day_price: 589,
-      details: ['Alexiliary heating', 'Head-up Display', 'Alloy wheels', 'Mp3 interface', 'Bluetooth', 'MP3 interface', 'Electric side Mirrow', 'Navigation System', 'CD player', 'Navigation System', 'Sports Package', 'Panoramic roof', 'Central Locking', 'Navigation System', 'Sports Package', 'Panoramic roof', 'Central Locking'],
-      category_id: 4,
-  },
-  {
-      id: 5,
-      type: "Minivan",
-      type_des: "Volkswagen Tiguan or Similar",
-      seats: 4,
-      bags: 2,
-      doors: 4,
-      snow: "A/C",
-      img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/minivan_van.png",
-      later_day_price: 1240,
-      now_day_price: 1180,
-      details: ['Alexiliary heating', 'Head-up Display', 'Alloy wheels', 'Mp3 interface', 'Bluetooth', 'MP3 interface', 'Electric side Mirrow', 'Navigation System', 'CD player', 'Navigation System', 'Sports Package', 'Panoramic roof', 'Central Locking', 'Navigation System', 'Sports Package', 'Panoramic roof', 'Central Locking'],
-      category_id: 5,
-  },
-  {
-      id: 6,
-      type: "Convertible",
-      type_des: "Volkswagen Tiguan or Similar",
-      seats: 4,
-      bags: 2,
-      doors: 4,
-      snow: "A/C",
-      img_url: "https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/conv-1.png",
-      later_day_price: 1001,
-      now_day_price: 900,
-      details: ['Alexiliary heating','MP3 interface', 'Electric side Mirrow', 'Navigation System', 'CD player', 'Navigation System', 'Sports Package', 'Panoramic roof', 'Central Locking', 'Navigation System', 'Sports Package', 'Panoramic roof', 'Central Locking'],
-      category_id: 6,
-  },
-]
-
 const Brand = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [promos, setPromos] = useState([]);
+
   const {id} = useParams();
 
-  const brands = vehicleData
-    .filter(data => data.category_id == id)
-    .map(data => (
-      <BrandComp
-      key={data.id}
-      id={data.id}
-      type={data.type}
-      type_des={data.type_des}
-      seats={data.seats}
-      bags={data.bags}
-      doors={data.doors}
-      snow={data.snow}
-      img_url={data.img_url}
-      later_day_price={data.later_day_price}
-      now_day_price={data.now_day_price}
-      details = {data.details}
-    />
-  ))
+  useEffect(()=>{
+    brands();
+    getPromos();
+  }, [])
 
+  const brands = async() => {
+    setLoading(true);
+    const startLoadingTime = Date.now(); // Record the start time
+    try {
+      const response = await axios.get("http://localhost:8080/api/car/bycat/"+id);
+      setCars(response.data);
+    }
+    catch (error) {
+      setError(error);
+    }
+    finally {
+      const loadingDuration = Date.now() - startLoadingTime;
+      const minimumLoadingTime = 1000; // 1 second in milliseconds
+
+      if (loadingDuration < minimumLoadingTime) {
+          // If less than 1 second, wait for the remaining time
+          await new Promise(resolve => setTimeout(resolve, minimumLoadingTime - loadingDuration));
+      } 
+      setLoading(false);
+    }
+  }
+
+  const getPromos = async() => {
+    try {
+      const promosData = await axios.get("http://localhost:8080/api/homeadditions/promo/" + id);
+          setPromos(promosData.data);
+      } catch (error) {
+          console.log(error);
+      }
+  }
   return (
-    <div>
+    <>
+    {loading ? (
+      <div className="loading-spinner"></div>
+    ) : (
+      <div>
       <div className='brand-reservation text-center'>
         <div className='container'>
-          <h1 className='color-white m-0 m-t-38'>RESERVATION</h1>
-          <div className='row'>
-            <div className='col-lg-4 col-md-10 col-sm-10'>
-              <div>
-                <Link className='flex reserve-form-opacity' to="">
-                  <div className='reserve-number-div'><span className='color-secondary reserve-form-number'>1</span></div>
-                  <label className='color-white reserve-form-des text-center'>Your Itinerary</label>
-                </Link>
-                <div className='reserve-form-label hidden-md-reserve'>
-                  <p>PICK UP</p>
-                  <p>--</p>
-                  <p>--</p>
-                  <br />
-                  <p>DROP OFF</p>
-                  <p>--</p>
-                  <p>--</p>
-                  <br />
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-4 col-md-10 col-sm-10'>
-              <div>
-                <Link className='flex reserve-form-opacity' to="">
-                  <div className='reserve-number-div'><span className='color-secondary reserve-form-number'>2</span></div>
-                  <label className='color-white reserve-form-des'>Select Vehicle/Add-on</label>
-                </Link>
-                <div className='reserve-form-label bg-color-secondary color-white hidden-md-reserve'>
-                  <p>Type</p>
-                  <p>--</p>
-                  <p>--</p>
-                  <br />
-                  <p>ADDONS</p>
-                  <p>--</p>
-                  <p>--</p>
-                  <br />
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-4 col-md-10 col-sm-10'>
-              <div>
-                <Link className='flex reserve-form-opacity' to="">
-                  <div className='reserve-number-div'><span className='color-secondary reserve-form-number'>3</span></div>
-                  <label className='color-white reserve-form-des'>Reserve Your Vehicle</label>
-                </Link>
-                <div className='reserve-form-label hidden-md-reserve'>
-                  <p>Your Information</p>
-                  <p>--</p>
-                  <br />
-                  <br />
-                  <p>Payment Information</p>
-                  <p>--</p>
-                  <br />
-                  <br />
-                </div>
-              </div>
-            </div>
-          </div>
+        <h1 className='color-white text-center m-0 p-s'>Promo</h1>
+          <Swiper
+              spaceBetween={20}
+              freeMode={true}
+              pagination={{
+                  clickable: true,
+              }}
+              modules={[FreeMode, Pagination]}
+              className="mySwiper"
+              breakpoints={{
+                  // when window width is <= 640px
+                  560: {
+                      slidesPerView: 1, // Show 1 slide
+                  },
+                  // when window width is > 640px and <= 1024px
+                  800: {
+                      slidesPerView: 2, // Show 2 slides (optional)
+                  },
+                  // when window width is > 1024px
+                  1025: {
+                      slidesPerView: 3, // Show 3 slides
+                  },
+              }}
+              >
+                  {promos.map((data, key) => (
+                        <SwiperSlide key={key}>
+                        <div className='text-center b-d-g' style={{
+                            padding: "20px 30px 0px 30px"
+                        }}>
+                            <div className='home-swiper-img-div' style={{
+                                backgroundImage: `url(${data.imgUrl})`
+                            }}>
+
+                            </div>
+                          
+                            <h3 className='client-name'>{data.type}</h3>
+                            <h3 className='client-name'>{data.typeDes}</h3>
+                        </div>
+                    </SwiperSlide>
+                  ))}
+          </Swiper>
         </div>
       </div>
       <div className='brand-content'>
@@ -201,11 +134,28 @@ const Brand = () => {
           </div>
 
           <div className='brand-list'>
-          {brands.length > 0 ? brands : <p>No vehicles found for this category.</p>}
+          { cars.length > 0 ? cars.map((data) => (
+               <BrandComp
+                key={data._id}
+                id={data._id}
+                type={data.type}
+                type_des={data.type_des}
+                seats={data.seats}
+                bags={data.bags}
+                doors={data.doors}
+                snow={data.snow}
+                img_url={data.imgUrl}
+                later_day_price={data.laterDayPrice}
+                now_day_price={data.nowDayPrice}
+                details = {data.details}
+              />
+          )) : <p>No Vehicles</p>}
           </div>
         </div>
       </div>
     </div>
+    )}
+    </>
   );
 };
 

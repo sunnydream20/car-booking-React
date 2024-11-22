@@ -1,10 +1,11 @@
   
   /* header */
   .header {
-    z-index: 2;
+    z-index: 20;
     height: 100px;
     position: sticky;
     top: 0px;
+    box-shadow: 4px 3px 15px rgba(0,0,0,0.6);
   }
   .nav-header {
     background-color: #273b84;
