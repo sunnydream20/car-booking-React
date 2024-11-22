@@ -100,7 +100,7 @@ const Footer = () => {
             </div>
           </div>
           <div className='copyright-footer b-t-g p-s flex flex-wrap align-center justify-spacebetween'>
-              <p className='color-lightgray'>Copyright @ 2024. <span className='color-secondary'>Motors</span> - WordPress Theme By <span className='color-secondary'>StylemixThemes</span></p>
+              <p className='color-lightgray'>Copyright @ 2024 -  <span className='color-secondary'>CARTOPIA.</span></p>
               <div>
                 <FontAwesomeIcon icon={faFacebook} style={{
                   color: "#f78e20",

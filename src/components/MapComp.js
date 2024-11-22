@@ -1,6 +1,6 @@
 // MapComponent.js
 import React, { useCallback, useState } from 'react';
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 
 const mapContainerStyle = {
     height: "400px", // Set the height of the map
@@ -8,28 +8,32 @@ const mapContainerStyle = {
 };
 
 const center = {
-    lat: 34.0522,    // Los Angeles latitude
-    lng: -118.2437   // Los Angeles longitude
+    lat: -6.173673152923584,    // Los Angeles latitude
+    lng: 106.80412292480469   // Los Angeles longitude
 };
 
 const locations = [
-    { lat: 34.0522, lng: -118.2437 }, // Los Angeles
-    { lat: 34.0407, lng: -118.2468 }, // Another position
-    { lat: 34.0630, lng: -118.2754 }, // Another position
-    { lat: 34.0701, lng: -118.2187 }, // Another position
-    { lat: 34.0515, lng: -118.2500 }, // Another position
-    { lat: 34.0377, lng: -118.2489 }, // Another position
+    {
+        lat: -6.173673152923584,    // Los Angeles latitude
+        lng: 106.80412292480469   // Los Angeles longitude
+    },
+    {
+        lat: -6.17368,    // Los Angeles latitude
+        lng: 106.8042   // Los Angeles longitude
+    },
+    {
+        lat: -6.173673152923584,    // Los Angeles latitude
+        lng: 106.80412292480469   // Los Angeles longitude
+    },
 ];
 
 const MapComponent = () => {
-    const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: '236e50612c93fab6f69dda36244da55d' // Use your API key here
-    });
 
     const [map, setMap] = useState(null); // State to hold useful map instance
 
-    const onLoad = useCallback((map) => {
-        setMap(map);
+    const onLoad = useCallback((mapInstance) => {
+        setMap(mapInstance);
+        
     }, []);
 
     const zoomIn = () => {
@@ -44,12 +48,13 @@ const MapComponent = () => {
         }
     };
 
-    if (loadError) return <div>Error loading maps</div>;
-    if (!isLoaded) return <div>Loading...</div>;
+    // if (loadError) return <div>Error loading maps</div>;
+    // if (!isLoaded) return <div>Loading...</div>;
 
     return (
         <div style={{
-            position: "relative"
+            position: "relative",
+            backgroundColor: "white",
         }}>
             <div style={{
                 position: "absolute",
@@ -62,7 +67,7 @@ const MapComponent = () => {
             </div>
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
-                zoom={12} // Starting zoom
+                zoom={14} // Starting zoom
                 center={center}
                 onLoad={onLoad}
                 draggable={true} // Enable dragging

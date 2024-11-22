@@ -16,21 +16,21 @@ export default function Vehicle ({id, type, type_des, seats, bags, doors, snow, 
             <div className='vehicle-item'>
                 <div className='flex flex-row'>
                     <div style={{width: "60%"}}>
-                        <h2 className='m-0'>{type}</h2>
-                        <p className='m-0'><strong>{type_des}</strong></p>
-                        <p className="bg-color-secondary color-white p-xs w-fit-content price-btn" style={{padding: "10px 20px"}}>From <br /><span style={{fontSize: "20px"}}>${now_day_price}</span>/day</p> 
+                        <h2 className='color-primary m-0'>{type}</h2>
+                        <p className='color-primary m-0 vehicle-des-p'><strong>{type_des}</strong></p>
+                        <p className="bg-color-secondary color-white p-xs w-fit-content price-btn" style={{padding: "10px 20px"}}>From <br /><span style={{fontSize: "20px"}}>Rp {now_day_price}</span>/day</p> 
                     </div>
-                    <div className='p-l-s'>
-                        <div className='flex align-center gap-xs m-b-xs'>
+                    <div className='p-l-s m-t-xs'>
+                        <div className='flex align-center color-primary gap-xs m-b-xs'>
                             <FontAwesomeIcon className='icon' icon={faChair} />{seats} Seats
                         </div>
-                        {bags ? <div className='flex align-center gap-xs m-b-xs'>
+                        {bags ? <div className='flex align-center color-primary gap-xs m-b-xs'>
                             <FontAwesomeIcon className='icon' icon={faBagShopping} />{bags} Bags
                         </div> : ""}
-                        <div className='flex align-center gap-xs m-b-xs'>
+                        <div className='flex align-center gap-xs m-b-xs color-primary'>
                             <FontAwesomeIcon className='icon' icon={faDoorOpen} />{doors} Doors
                         </div>
-                        <div className='flex align-center gap-xs'>
+                        <div className='flex align-center gap-xs color-primary'>
                             <FontAwesomeIcon className='icon' icon={faSnowflake} />{snow}
                         </div>
                        
