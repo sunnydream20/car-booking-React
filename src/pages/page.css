@@ -736,18 +736,23 @@
     height: 200px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     border-radius: 5px;
     overflow: hidden;
   }
 
   .popular-div h3 {
-    margin: 5px;
+    margin: 0px;
   }
 
   .popular-div p {
-    margin: 5px;
+    margin: 0px;
   }
+
+  .popular-div .des-p {
+    height: 36px;
+    overflow: hidden;
+  } 
 
   .popular-div a {
     text-decoration: none;
@@ -793,3 +798,15 @@
         top: 100px;
     }
   }
+
+
+  /* popular and promo see detail butotn css */
+.seedeatil-btn {
+  text-decoration: none;
+  background-color: #273b84;
+  color: white !important;
+  padding: 3px 10px;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}

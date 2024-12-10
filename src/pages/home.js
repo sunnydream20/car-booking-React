@@ -25,21 +25,6 @@ import { faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const defaultHomeSliders = [
-    {
-        url: "https://imgcdn.oto.com/marketing/mg-4-ev-desktop-min-1729491943.jpg"
-    },
-    {
-        url: "https://imgcdn.oto.com/marketing/chery-omoda-5-desktop-min-1729491988.jpg"
-    },
-    {
-        url: "https://imgcdn.oto.com/marketing/car-insurance-oto-desktop-en-1717769360.jpg"
-    },
-    {
-        url: "https://imgcdn.oto.com/marketing/wuling-air-ev-desktop-min-1729491857.jpg"
-    },
-]
-
 const Home = () => {
     const [category, setCategory] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -248,9 +233,11 @@ const Home = () => {
                         </div>
                     </div>
                    
-                    <div className='popular-div'>
+                    <div className='popular-div' style={{
+                        marginBottom: "20px"
+                    }}>
                         <div className='container'>
-                        <h1 className='color-primary text-center m-0 p-s'>Popular</h1>
+                        <h1 className='color-primary text-center m-0 p-s'>Mobil Popular</h1>
                             <Swiper
                                 spaceBetween={20}
                                 freeMode={true}
@@ -270,14 +257,14 @@ const Home = () => {
                                     },
                                     // when window width is > 1024px
                                     1025: {
-                                        slidesPerView: 3, // Show 3 slides
+                                        slidesPerView: 4, // Show 3 slides
                                     },
                                 }}
                                 >
                                     {populars.map((data, key) => (
                                          <SwiperSlide key={key}>
                                          <div className='text-center b-d-g' style={{
-                                             padding: "20px 30px 0px 30px"
+                                             padding: "10px 30px 10px 30px"
                                          }}>
                                              <div className='home-swiper-img-div' style={{
                                                  backgroundImage: `url(${data.imgUrl})`
@@ -286,8 +273,9 @@ const Home = () => {
                                              </div>
                                            
                                              <h3 className='client-name'>{data.type}</h3>
-                                             <p className='client-bio'>{data.nowDayPrice}(Rp)</p>
-                                             <a className='client-bio' onClick={() => {seeDetail(data._id)}} href="#see-car">See Details</a>
+                                             <p className='client-bio color-primary'>(Rp) <strong>{data.nowDayPrice}</strong></p>
+                                             <p className='client-bio des-p'>{data.typeDes}</p>
+                                             <a className='client-bio seedeatil-btn' onClick={() => {seeDetail(data._id)}} href="#see-car">Lihat Details</a>
                                          </div>
                                      </SwiperSlide>
                                     ))}
@@ -297,7 +285,7 @@ const Home = () => {
                  
                     <div className='popular-div'>
                         <div className='container'>
-                        <h1 className='color-primary text-center m-0 p-s'>Promo</h1>
+                        <h1 className='color-primary text-center m-0 p-s'>Promo Terbaru</h1>
                             <Swiper
                                 spaceBetween={20}
                                 freeMode={true}
@@ -317,14 +305,14 @@ const Home = () => {
                                     },
                                     // when window width is > 1024px
                                     1025: {
-                                        slidesPerView: 3, // Show 3 slides
+                                        slidesPerView: 4, // Show 3 slides
                                     },
                                 }}
                                 >
                                     {promos.map((data, key) => (
                                          <SwiperSlide key={key}>
                                          <div className='text-center b-d-g' style={{
-                                             padding: "20px 30px 0px 30px"
+                                             padding: "10px 30px 10px 30px"
                                          }}>
                                              <div className='home-swiper-img-div' style={{
                                                  backgroundImage: `url(${data.imgUrl})`
@@ -333,8 +321,9 @@ const Home = () => {
                                              </div>
                                            
                                              <h3 className='client-name'>{data.type}</h3>
-                                             <p className='client-bio'>{data.nowDayPrice}(Rp)</p>
-                                             <a className='client-bio' onClick={() => {seeDetail(data._id)}} href="#see-car">See Details</a>
+                                             <p className='client-bio color-primary'>(Rp) <strong>{data.nowDayPrice}</strong></p>
+                                             <p className='client-bio des-p'>{data.typeDes}</p>
+                                             <a className='client-bio seedeatil-btn' onClick={() => {seeDetail(data._id)}} href="#see-car">Lihat Details</a>
                                          </div>
                                      </SwiperSlide>
                                     ))}
@@ -346,7 +335,7 @@ const Home = () => {
                     <div className='vehicle-background'>
                         <div className='vehicle-categories'>
                             <div className='container'>
-                                <h1 className='vehicle-title color-white m-t-0'>Vehicle Categories</h1>
+                                <h1 className='vehicle-title color-white m-t-0'>Brand Mobil</h1>
                                 <div className='row'>
                                     {vehicles()}
                                 </div>
@@ -354,10 +343,31 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='why-choose-us'>
-                        <div className='container'>
+                        <div className='container p-b-30'>
                             <WhyChooseUs />
                         </div>
                     </div>
+
+                    <div className='what-do-we-know bg-color-primary'>
+                        <div className='container'>
+                            <div className='row'>
+                                <div className='col-lg-6 col-md-5 col-sm-10 p-0 color-white'>
+                                    <h1 className='aboutus-title'>About Us</h1>
+                                    <p className='aboutus-bio'>Cartopia adalah perusahaan jasa penjualan otomotif yang berkomitmen untuk
+memberikan penawaran harga terbaik dengan proses termudah, menyediakan
+berbagai pilihan Mobil baru dari authorized dealer dengan garansi resmi dengan
+Visi menjadi One Stop Solution untuk setiap kebutuhan pembelian Mobil baru
+Anda.</p>
+                                    <button className='btn-secondary'>Our Company</button>
+                                </div>
+                                <div className='col-lg-6 col-md-5 col-sm-10 p-0'>
+                                    <div className='aboutus-img'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className='what-our-clients-say'>
                         <div className='container'>
                             <h1 className='color-primary text-center m-0 p-s'>What Our Clients Say</h1>
@@ -440,21 +450,7 @@ const Home = () => {
                             </Swiper>
                         </div>
                     </div>
-                    <div className='what-do-we-know bg-color-primary'>
-                        <div className='container'>
-                            <div className='row'>
-                                <div className='col-lg-6 col-md-5 col-sm-10 p-0 color-white'>
-                                    <h1 className='aboutus-title'>What Do You Know About Us</h1>
-                                    <p className='aboutus-bio'>Vestibulum id odio a erat gravida sollicitudin. Quisque porttitor turpis sit amet dolor imperdiet, et molestie tellus suscipit. Ut nec odio nisl. Quisque malesuada tortor non erat fermentum, sed sollicitudin nisl sodales. Pellentesque faucibus viverra massa, vitae tempus nisi venenatis eu. Proin mauris tellus, egestas ac tempor vitae, luctus lobortis nisl. Vivamus convallis gravida quam</p>
-                                    <button className='btn-secondary'>Our Company</button>
-                                </div>
-                                <div className='col-lg-6 col-md-5 col-sm-10 p-0'>
-                                    <div className='aboutus-img'>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div className='contact-banner bg-color-secondary'>
                         <div className='container'>
                             <div className='row text-center align-center'>

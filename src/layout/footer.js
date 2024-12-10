@@ -18,10 +18,12 @@ const Footer = () => {
               <div className='col-lg-3 col-md-4 col-sm-10'>
                 <div className='m-b-xs'>
                   <span className='color-secondary'>ABOUT </span>
-                  <span className='color-white'>CAR RENTAL</span> 
+                  <span className='color-white'>CARTOPIA</span> 
                 </div>
                 <div>
-                  <p className='color-lightgray font-xxs m-0'>Motors Automotive we repair domestic and foreign cars. We service the Los Angeles Metro Area for all Automotive Service & Repair.</p>
+                  <p className='color-lightgray font-xxs m-0' style={{
+                    textAlign: "justify"
+                  }}>Cartopia menawarkan pengalaman membeli mobil berkualitas dengan mudah dan aman. <br />Kami menyediakan pilihan mobil baru yang telah terjamin kualitasnya, didukung oleh layanan pelanggan yang profesional. Temukan mobil impian Anda bersama kami!</p>
                 </div>
               </div>
               <div className='col-lg-3 col-md-4 col-sm-10'>
@@ -30,16 +32,12 @@ const Footer = () => {
                 </div>
                 <div>
                   <div>
-                    <span className='color-lightgray font-xxs font-bold'>Car Rental Office: </span>
-                    <span className='color-white font-xxs'>(323) 9873-9472</span>
-                  </div>
-                  <div>
-                    <span className='color-lightgray font-xxs font-bold'>Vehicle Repair Service: </span>
-                    <span className='color-white font-xxs'>(878) 4624-5636</span>
+                    <span className='color-lightgray font-xxs font-bold'>Office: </span>
+                    <span className='color-white font-xxs'>021 - xxx - xxx</span>
                   </div>
                   <div>
                     <span className='color-lightgray font-xxs font-bold'>Email: </span>
-                    <span className='color-white font-xxs '>info@sytleixthemes.com</span>
+                    <span className='color-white font-xxs '>cs@cartopia.id</span>
                   </div>
                 </div>
               </div>
@@ -50,11 +48,11 @@ const Footer = () => {
                 <div>
                   <div>
                     <span className='color-lightgray font-xxs font-bold'>Monday - Friday: </span>
-                    <span className='color-white font-xxs'>09:00AM - 07-00PM</span>
+                    <span className='color-white font-xxs'>09:00AM - 05-00PM</span>
                   </div>
                   <div>
                     <span className='color-lightgray font-xxs font-bold'>Saturday: </span>
-                    <span className='color-white font-xxs'>09:00AM - 07:00PM</span>
+                    <span className='color-white font-xxs'>09:00AM - 05:00PM</span>
                   </div>
                   <div>
                     <span className='color-lightgray font-xxs font-bold'>SUnday: </span>
