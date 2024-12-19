@@ -28,11 +28,12 @@ const About = () => {
                         </div>
                         <div className='col-lg-6 col-md-5 col-sm-10 welcome-about'>
                             <h2 className='color-primary'>Welcome To the <span className='color-secondary'>MOTORS</span></h2>
-                            <p>Before we get ahead of ourselves, we want to welcome you to Loeber Motors. While nothing can replace thing on-the-lot experience.</p>
-                            <p>
-                            We appreciate you taking the time today to visit our web site. Our goal is to give you an interactive tour of our new and used inventory, as well as allow you to conveniently get a quote, schedule a service appointment, or apply for financing. The search for a luxury car is filled with high expectations. Undoubtedly, that has a lot to do with the vehicles you are considering, but at Motors, we think you should also have pretty high expectations for your dealership.
+                            <p>Cartopia adalah perusahaan jasa penjualan otomotif yang berkomitmen untuk
+memberikan penawaran harga terbaik dengan proses termudah, menyediakan
+berbagai pilihan Mobil baru dari authorized dealer dengan garansi resmi dengan
+Visi menjadi One Stop Solution untuk setiap kebutuhan pembelian Mobil baru
+Anda.
                             </p>
-                            <p className='italic'> — MIKEY DIOKLES, President of Motors</p>
                         </div>
                     </div>
                    
