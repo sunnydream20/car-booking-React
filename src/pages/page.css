@@ -9,6 +9,28 @@
 }
 
 
+
+.banner-aboutus {
+  background-image: url('../banner.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 450px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .banner-aboutus {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .banner-aboutus {
+    height: 200px;
+  }
+}
+
 @media screen and (max-width: 1025px) {
     .including-form {
         height: 550px;
@@ -223,7 +245,6 @@
 
 .about-content {
     background-color: #eeeeee;
-    padding-top: 50px;
 }
 
 .about-content h2 {
@@ -406,7 +427,7 @@
 }
 
 .about-social-img {
-    width: 180px;
+    width: 120px;
     opacity: 0.7;
 }
 

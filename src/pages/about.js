@@ -18,11 +18,13 @@ const About = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
         <>
+        
             <div className='about-content'>
+                <div className='banner-aboutus'></div>
                 <div className='container'>
                     <div className='flex flex-wrap'>
                         <div className='col-lg-6 col-md-5 col-sm-10'>
-                            <img className='about-welcome-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/Fotolia_53618826_Subscription_Monthly_M-1023x681.jpg' alt='...loading' />
+                            <img className='about-welcome-img' src='https://lh3.googleusercontent.com/u/0/d/1Pda4k5IoiOJMPtRgmfBRN1_BFdrU3yRY=w1920-h953-iv1' alt='...loading' />
                         </div>
                         <div className='col-lg-6 col-md-5 col-sm-10 welcome-about'>
                             <h2 className='color-primary'>Welcome To the <span className='color-secondary'>MOTORS</span></h2>
@@ -33,7 +35,7 @@ const About = () => {
                             <p className='italic'> — MIKEY DIOKLES, President of Motors</p>
                         </div>
                     </div>
-
+                   
                     <div className='flex flex-wrap'>
                        
                         <div className='col-lg-6 col-md-5 col-sm-10 welcome-about'>
@@ -62,7 +64,7 @@ const About = () => {
                         </div>
 
                         <div className='col-lg-6 col-md-5 col-sm-10'>
-                            <img className='about-welcome-img m-b-s' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/Fotolia_90052796_Subscription_Monthly_M-1023x681.jpg' alt='...loading' />
+                            <img className='about-welcome-img m-b-s' src='https://lh3.googleusercontent.com/u/0/d/1LN8sd9FVLhIrOY0Mp0XQK7ZKba0dtfVy=w1920-h953-iv1' alt='...loading' />
                         </div>
                     </div>
                 </div>
@@ -167,12 +169,16 @@ const About = () => {
                 <div className='about-banner-social'>
                     <div className='container'>
                         <div className='flex flex-wrap justify-center align-center'>
-                            <img className='about-social-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/1-300x150-299x149.png' alt='...loading' />
-                            <img className='about-social-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/5-300x150-299x149.png' alt='...loading' />
-                            <img className='about-social-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/6-300x150-299x149.png' alt='...loading' />
-                            <img className='about-social-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/4-300x150-299x149.png' alt='...loading' />
-                            <img className='about-social-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/5-300x150-299x149.png' alt='...loading' />
-                            <img className='about-social-img' src='https://motors.stylemixthemes.com/rent-a-car/wp-content/uploads/sites/7/2017/01/6-300x150-299x149.png' alt='...loading' />
+                            <img className='about-social-img' src='https://lh3.googleusercontent.com/u/0/d/1-Q7Fr_Ld5GlPBfLZnZqBVuYxaq9WT5uv=w1886-h867-iv1' alt='...loading' />
+                            <img className='about-social-img' src='https://lh3.googleusercontent.com/u/0/d/1UbGaOIaGerHdz_F0FUYfKEPfbQ2XGnQG=w1886-h867-iv1' alt='...loading' />
+                            <img className='about-social-img' src='https://lh3.googleusercontent.com/u/0/d/1qhvukL89lvxOLEd4R1VSlTrzBvLhVC_3=w1251-h867-iv1' alt='...loading' />
+                            <img className='about-social-img' src='https://lh3.googleusercontent.com/u/0/d/18Jd0umRrKVjJeha-CJt065OrdrhNx2JO=w1251-h867-iv1' alt='...loading' />
+                            <img className='about-social-img' src='https://lh3.googleusercontent.com/u/0/d/18LRQzFfOoFMu4fOFL9lok68vFB5x3WjQ=w1251-h867-iv1' alt='...loading' />
+                            <img className='about-social-img' src='https://lh3.googleusercontent.com/u/0/d/1XRyiFm9MdQQ5H6pB9PNJAGLOhP9eN1ay=w1251-h867-iv1' alt='...loading' />
+                            <img className='about-social-img' src='https://lh3.googleusercontent.com/u/0/d/1koEpIAhNsOpM2C3SG1_-8tdDbHWkKHuW=w1251-h867-iv1' alt='...loading' />
+                            <img className='about-social-img' src='https://lh3.googleusercontent.com/u/0/d/1pG-GDTEhHeTDIoVVxJkqEKge0vL6OGZA=w1251-h867-iv1' alt='...loading' />
+
+                        
                         </div>
                     </div>
                 </div>
