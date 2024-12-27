@@ -831,3 +831,16 @@
   border-radius: 3px;
   margin-bottom: 5px;
 }
+
+.article-title {
+  text-align: center;
+}
+
+.article-content {
+  padding-top: 10px;
+  background-color: #eee;
+}
+
+.article-content .ant-pagination {
+  justify-content: center;
+}

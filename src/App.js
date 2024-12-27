@@ -7,6 +7,7 @@ import Brand from './pages/brand';
 import About from './pages/about';
 import Contact from './pages/contact';
 import Whatsapp from './pages/whatsapp';
+import Article from "./pages/article";
 
 import './App.css';
 
@@ -19,6 +20,8 @@ const App = () => {
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/whatsapp/:id" element={<Layout><Whatsapp /></Layout>} />
+        <Route path="/article" element={<Layout><Article /></Layout>} />
+        
       </Routes>
     </Router>
   );
