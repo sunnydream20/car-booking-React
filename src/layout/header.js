@@ -21,7 +21,7 @@ const Header = () => {
                         </div>
                     </li>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/">Brand</Link></li>
+                    <li><Link to="/bannerbrand">Brand</Link></li>
                     <li><Link to="/article">Article</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>

@@ -8,6 +8,9 @@ import About from './pages/about';
 import Contact from './pages/contact';
 import Whatsapp from './pages/whatsapp';
 import Article from "./pages/article";
+import HomeSliderArticle from "./pages/homesliderarticles";
+import BannerBrand from "./pages/bannerbrand";
+
 
 import './App.css';
 
@@ -21,7 +24,8 @@ const App = () => {
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/whatsapp/:id" element={<Layout><Whatsapp /></Layout>} />
         <Route path="/article" element={<Layout><Article /></Layout>} />
-        
+        <Route path="/article/homeslider/:id" element={<Layout><HomeSliderArticle /></Layout>} />
+        <Route path="/bannerbrand" element={<Layout><BannerBrand /></Layout>} />
       </Routes>
     </Router>
   );

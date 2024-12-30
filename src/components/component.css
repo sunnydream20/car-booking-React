@@ -264,3 +264,36 @@
     margin-top: 5px;
     font-size: 14px;
   }
+
+  .bannerbrand-comp {
+    width: 180px;
+    margin: 10px;
+    padding: 15px 10px;
+    height: 180px;
+   text-align: center;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+  }
+
+  .bannerbrand-comp-img {
+    border-radius: 999px;
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    margin: auto;
+  }
+
+  .bannerbrand-comp-title {
+    height: 40px;
+    overflow: hidden;
+    margin: 10px;
+  }
+
+  .bannerbrand-comp-des {
+    margin: 3px;
+    height: 20px;
+    overflow: hidden;
+  }

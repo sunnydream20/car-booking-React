@@ -844,3 +844,15 @@
 .article-content .ant-pagination {
   justify-content: center;
 }
+
+.banner-content {
+  padding: 50px 0px 100px 0px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.banner-content .title{
+  text-align: center;
+  margin: 50px;
+}

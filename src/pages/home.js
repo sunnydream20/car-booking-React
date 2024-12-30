@@ -23,7 +23,7 @@ import { FreeMode, Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneSquare } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const [category, setCategory] = useState([]);
@@ -33,6 +33,7 @@ const Home = () => {
     const [populars, setPopulars] = useState([]);
     const [promos, setPromos] = useState([]);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
     const [currentCar, setCurrentCar] = useState({
         _id: "",
         type: "",
@@ -171,6 +172,10 @@ const Home = () => {
         cards.scrollLeft=cards.scrollLeft -= window.innerWidth / 2 > 100 ? 220 : window.innerWidth -220
     }
 
+    const handleSlideClick = (id) => {
+        navigate(`/article/homeslider/${id}`);
+    };
+
     return (
         <>
             {loading ? (
@@ -187,14 +192,19 @@ const Home = () => {
                                 disableOnInteraction: false
                             }}>
                                 {urls.map((data, key) => (
-                                    <SwiperSlide key={key} style={{
-                                        backgroundImage: `url(${data.url})`,
-                                        backgroundPosition: 'center',
-                                        backgroundRepeat: 'no-repeat',
-                                        backgroundSize: 'cover'
-                                    }}>
-                                        {/* <img className='slider-img' src={data.url} alt='...loading' /> */}
-                                    </SwiperSlide>
+                              
+                                        <SwiperSlide
+                                            id={data._id}
+                                            onClick={() => handleSlideClick(data._id)}
+                                            key={key} style={{
+                                            backgroundImage: `url(${data.url})`,
+                                            backgroundPosition: 'center',
+                                            backgroundRepeat: 'no-repeat',
+                                            backgroundSize: 'cover'
+                                        }}>
+                                            {/* <img className='slider-img' src={data.url} alt='...loading' /> */}
+                                        </SwiperSlide>
+                      
                                 ))}
                         </Swiper>
 
