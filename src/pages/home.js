@@ -216,15 +216,17 @@ const Home = () => {
                                 </button>
                                 <div className="card-content">
                                     {banners.map((data, key) => (
-                                        <div className="card" key={key}>
-                                            <div className="card-img">
-                                                <img src={data.url} alt='...loading'/>                                
+                                        <Link to={`/brand/${data.categoryId}`} className='textdecoration-none'>
+                                            <div className="card" key={key}>
+                                                <div className="card-img">
+                                                    <img src={data.url} alt='...loading'/>                                
+                                                </div>
+                                                <div className="card-text">
+                                                    <h3>{data.title}</h3>
+                                                    <p>{data.des}</p>
+                                                </div>
                                             </div>
-                                            <div className="card-text">
-                                                <h3>{data.title}</h3>
-                                                <p>{data.des}</p>
-                                            </div>
-                                        </div>
+                                        </Link>
                                     ))}
                                 </div>
                                 <button id="next" onClick={() => {nextBanner()}} className="btn">

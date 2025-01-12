@@ -38,6 +38,7 @@ const BannerBrand = () => {
                                 url = {data.url}
                                 title = {data.title}
                                 des = {data.des}
+                                categoryId = {data.categoryId}
                                 />
                         )) : ""}
                 </div>
